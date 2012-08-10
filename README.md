@@ -1,5 +1,6 @@
 Lemn
 ====
+Partner Management in gyms
 
 Licence (MIT)
 =============
