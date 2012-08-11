@@ -10,7 +10,7 @@ module ApplicationHelper
       out = ''.html_safe
 
       out << render(
-        partial: 'shared/button_dropdown', :locals => {
+        :partial => 'shared/button_dropdown', :locals => {
           :main_action => main_action, :extra_actions => extra_actions
         }
       )
@@ -20,7 +20,7 @@ module ApplicationHelper
   def pagination_links(objects, params = nil)
     result = will_paginate objects,
       :inner_window => 1, :outer_window => 1, :params => params,
-      renderer: BootstrapPaginationHelper::LinkRenderer,
+      :renderer => BootstrapPaginationHelper::LinkRenderer,
       :class => 'pagination pagination-right'
     page_entries = content_tag(
       :blockquote,
@@ -60,7 +60,9 @@ module ApplicationHelper
     options['title'] ||= t('label.edit')
     options['data-show-tooltip'] ||= true
 
-    link_to '&#x270e;'.html_safe, *args, options
+    args << options
+
+    link_to '&#x270e;'.html_safe, *args
   end
 
   def link_to_destroy(*args)
@@ -72,6 +74,8 @@ module ApplicationHelper
     options['data-confirm'] ||= t('messages.confirmation')
     options['data-show-tooltip'] ||= true
 
-    link_to '&#xe05a;'.html_safe, *args, options
+    args << options
+
+    link_to '&#xe05a;'.html_safe, *args
   end
 end

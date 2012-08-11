@@ -1,16 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  after_filter -> { expires_now if user_signed_in? }
+  after_filter lambda { expires_now if user_signed_in? }
 
   rescue_from Exception do |exception|
     begin
       if exception.kind_of? CanCan::AccessDenied
-        redirect_to root_url, alert: t('errors.access_denied')
+        redirect_to root_url, :alert => t('errors.access_denied')
       else
         @title = t('errors.title')
 
         if response.redirect_url.blank?
-          render template: 'shared/show_error', :locals => { :error => exception }
+          render :template => 'shared/show_error', :locals => { :error => exception }
         end
 
         logger.error(([exception, ''] + exception.backtrace).join("\n"))
