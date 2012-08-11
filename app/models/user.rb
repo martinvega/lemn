@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
-  has_magick_columns :name => :string, :lastname => :string, :email => :email
-
   devise :database_authenticatable, :recoverable, :rememberable, :trackable,
     :validatable
 
@@ -41,6 +39,6 @@ class User < ActiveRecord::Base
   end
 
   def self.filtered_list(query)
-    query.present? ? magick_search(query) : scoped
+    query.present? ? all : scoped
   end
 end
