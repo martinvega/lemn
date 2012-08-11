@@ -8,5 +8,5 @@ LEMN::Application.routes.draw do
     end
   end
 
-  root to: 'users#index'
+  root :to => 'users#index'
 end
