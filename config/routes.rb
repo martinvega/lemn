@@ -1,4 +1,10 @@
 LEMN::Application.routes.draw do
+  resources :payments
+
+  resources :assistances
+
+  resources :partners
+
   devise_for :users
 
   resources :users do

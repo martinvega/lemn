@@ -1,0 +1,17 @@
+<div class="readonly-data">
+  <h2><%= @assistance %></h2>
+
+  <p>
+    <strong><%= Assistance.human_attribute_name 'date' %></strong>:
+    <%= @assistance.date %>
+  </p>
+  <p>
+    <strong><%= Assistance.human_attribute_name 'partner_id' %></strong>:
+    <%= @assistance.partner_id %>
+  </p>
+  
+</div>
+<div class="form-actions">
+  <%= link_to t('label.edit'), edit_assistance_path(@assistance) if can? :update, @assistance %> |
+  <%= link_to t('label.list'), assistances_path %>
+</div>

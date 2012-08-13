@@ -1,0 +1,25 @@
+<div class="readonly-data">
+  <h2><%= @payment %></h2>
+
+  <p>
+    <strong><%= Payment.human_attribute_name 'date' %></strong>:
+    <%= @payment.date %>
+  </p>
+  <p>
+    <strong><%= Payment.human_attribute_name 'amount' %></strong>:
+    <%= @payment.amount %>
+  </p>
+  <p>
+    <strong><%= Payment.human_attribute_name 'concept' %></strong>:
+    <%= @payment.concept %>
+  </p>
+  <p>
+    <strong><%= Payment.human_attribute_name 'partner_id' %></strong>:
+    <%= @payment.partner_id %>
+  </p>
+  
+</div>
+<div class="form-actions">
+  <%= link_to t('label.edit'), edit_payment_path(@payment) if can? :update, @payment %> |
+  <%= link_to t('label.list'), payments_path %>
+</div>

@@ -1,0 +1,6 @@
+<%= content_for :form_actions do %>
+  <%= link_to t('label.show'), @partner %> |
+  <%= link_to t('label.list'), partners_path %>
+<% end %>
+
+<%= render 'form' %>

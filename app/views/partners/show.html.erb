@@ -1,0 +1,45 @@
+<div class="readonly-data">
+  <h2><%= @partner %></h2>
+
+  <p>
+    <strong><%= Partner.human_attribute_name 'name' %></strong>:
+    <%= @partner.name %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'lastname' %></strong>:
+    <%= @partner.lastname %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'address' %></strong>:
+    <%= @partner.address %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'phone' %></strong>:
+    <%= @partner.phone %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'movil_phone' %></strong>:
+    <%= @partner.movil_phone %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'email' %></strong>:
+    <%= @partner.email %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'admission_date' %></strong>:
+    <%= @partner.admission_date %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'birth_date' %></strong>:
+    <%= @partner.birth_date %>
+  </p>
+  <p>
+    <strong><%= Partner.human_attribute_name 'document' %></strong>:
+    <%= @partner.document %>
+  </p>
+  
+</div>
+<div class="form-actions">
+  <%= link_to t('label.edit'), edit_partner_path(@partner) if can? :update, @partner %> |
+  <%= link_to t('label.list'), partners_path %>
+</div>

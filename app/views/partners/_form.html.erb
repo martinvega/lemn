@@ -1,0 +1,20 @@
+<%= simple_form_for(@partner) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :lastname %>
+    <%= f.input :address %>
+    <%= f.input :phone %>
+    <%= f.input :movil_phone %>
+    <%= f.input :email %>
+    <%= f.input :admission_date %>
+    <%= f.input :birth_date %>
+    <%= f.input :document %>
+  </div>
+
+  <div class="form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
