@@ -1,4 +1,5 @@
 User.create!(
+  :user => 'admin',
   :name => 'Admin',
   :lastname => 'Admin',
   :email => 'admin@lemn.com',

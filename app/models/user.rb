@@ -11,15 +11,16 @@ class User < ActiveRecord::Base
     :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :lastname, :email, :password, :password_confirmation,
+  attr_accessible :user, :name, :lastname, :email, :password, :password_confirmation,
     :role, :remember_me, :lock_version
 
   # Defaul order
-  default_scope order('lastname ASC')
+  default_scope order('user ASC')
 
   # Validations
-  validates :name, :presence => true
-  validates :name, :lastname, :email, :length => { :maximum => 255 }, :allow_nil => true,
+  validates :name, :user, :lastname, :presence => true
+  validates :user, :uniqueness => true
+  validates :name, :lastname, :email, :user, :length => { :maximum => 255 }, :allow_nil => true,
     :allow_blank => true
 
   def initialize(attributes = nil, options = {})

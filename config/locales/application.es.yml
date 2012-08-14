@@ -23,6 +23,7 @@
         date: 'Fecha'
         partner_id: 'Socio'
       user:
+        user: 'Usuario'
         name: 'Nombre'
         lastname: 'Apellido'
         email: 'Correo'

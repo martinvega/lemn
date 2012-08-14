@@ -37,7 +37,7 @@
           <ul class="nav pull-right">
             <li>
               <%= link_to(
-                current_user.email, edit_profile_user_path(current_user),
+                current_user.user, edit_profile_user_path(current_user),
                 'title' => t('view.users.edit_profile'),
                 'data-show-tooltip' => true, 'data-placement' => 'bottom'
               ) %>
