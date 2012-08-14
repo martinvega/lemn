@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120812000822) do
     t.string   "lastname",                      :null => false
     t.string   "address"
     t.integer  "phone"
-    t.integer  "movil_phone"
+    t.integer  "mobile_phone"
     t.string   "email"
     t.date     "admission_date"
     t.date     "birth_date"

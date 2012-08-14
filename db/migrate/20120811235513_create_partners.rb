@@ -5,7 +5,7 @@ class CreatePartners < ActiveRecord::Migration
       t.string :lastname, :null => false
       t.string :address
       t.integer :phone
-      t.integer :movil_phone
+      t.integer :mobile_phone
       t.string :email
       t.date :admission_date
       t.date :birth_date
