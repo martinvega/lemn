@@ -53,8 +53,8 @@ class PaymentsController < ApplicationController
         format.html { redirect_to @payment, :notice => t('view.payments.correctly_created') }
         format.json { render :json => @payment, :status => :created, :location => @payment }
       else
-        format.html { render action: 'new' }
-        format.json { render :json => @payment.errors, status: :unprocessable_entity }
+        format.html { render :action => 'new' }
+        format.json { render :json => @payment.errors, :status => :unprocessable_entity }
       end
     end
   end

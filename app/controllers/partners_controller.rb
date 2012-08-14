@@ -53,8 +53,8 @@ class PartnersController < ApplicationController
         format.html { redirect_to @partner, :notice => t('view.partners.correctly_created') }
         format.json { render :json => @partner, :status => :created, :location => @partner }
       else
-        format.html { render action: 'new' }
-        format.json { render :json => @partner.errors, status: :unprocessable_entity }
+        format.html { render :action => 'new' }
+        format.json { render :json => @partner.errors, :status => :unprocessable_entity }
       end
     end
   end

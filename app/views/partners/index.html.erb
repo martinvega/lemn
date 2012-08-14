@@ -10,11 +10,11 @@
             <th><%= Partner.human_attribute_name 'lastname' %></th>
             <th><%= Partner.human_attribute_name 'address' %></th>
             <th><%= Partner.human_attribute_name 'phone' %></th>
-            <th><%= Partner.human_attribute_name 'movil_phone' %></th>
+            <th><%= Partner.human_attribute_name 'mobile_phone' %></th>
             <th><%= Partner.human_attribute_name 'email' %></th>
+            <th><%= Partner.human_attribute_name 'document' %></th>
             <th><%= Partner.human_attribute_name 'admission_date' %></th>
             <th><%= Partner.human_attribute_name 'birth_date' %></th>
-            <th><%= Partner.human_attribute_name 'document' %></th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -28,9 +28,9 @@
               <td><%= partner.phone %></td>
               <td><%= partner.movil_phone %></td>
               <td><%= partner.email %></td>
+              <td><%= partner.document %></td>
               <td><%= partner.admission_date %></td>
               <td><%= partner.birth_date %></td>
-              <td><%= partner.document %></td>
               <td><%= link_to_show partner %></td>
               <td><%= link_to_edit edit_partner_path(partner) if can? :update, partner %></td>
               <td><%= link_to_destroy partner if can? :destroy, partner %></td>

@@ -53,8 +53,8 @@ class AssistancesController < ApplicationController
         format.html { redirect_to @assistance, :notice => t('view.assistances.correctly_created') }
         format.json { render :json => @assistance, :status => :created, :location => @assistance }
       else
-        format.html { render action: 'new' }
-        format.json { render :json => @assistance.errors, status: :unprocessable_entity }
+        format.html { render :action => 'new' }
+        format.json { render :json => @assistance.errors, :status => :unprocessable_entity }
       end
     end
   end

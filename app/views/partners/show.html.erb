@@ -18,7 +18,7 @@
     <%= @partner.phone %>
   </p>
   <p>
-    <strong><%= Partner.human_attribute_name 'movil_phone' %></strong>:
+    <strong><%= Partner.human_attribute_name 'mobile_phone' %></strong>:
     <%= @partner.movil_phone %>
   </p>
   <p>
@@ -37,7 +37,7 @@
     <strong><%= Partner.human_attribute_name 'document' %></strong>:
     <%= @partner.document %>
   </p>
-  
+
 </div>
 <div class="form-actions">
   <%= link_to t('label.edit'), edit_partner_path(@partner) if can? :update, @partner %> |
