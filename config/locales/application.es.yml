@@ -7,11 +7,21 @@
 
   activerecord:
     models:
+      assistance: 'Asistencia'
       user:
         one: 'Usuario'
         other: 'Usuarios'
+      partner:
+        one: 'Socio'
+        other: 'Socios'
+      payment:
+        one: 'Pago'
+        other: 'Pagos'
 
     attributes:
+      assistance:
+        date: 'Fecha'
+        partner_id: 'Socio'
       user:
         name: 'Nombre'
         lastname: 'Apellido'
@@ -22,6 +32,21 @@
           one: 'Perfil'
           other: 'Perfiles'
         remember_me: 'Recordarme'
+      partner:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        address: 'Domicilio'
+        phone: 'Teléfono'
+        mobile_phone: 'Celular'
+        email: 'Correo'
+        birth_date: 'Fecha de nacimiento'
+        admission_date: 'Fecha de ingreso'
+        document: 'D.N.I.'
+      payment:
+        date: 'Fecha'
+        amount: 'Monto'
+        concept: 'Concepto'
+        partner_id: 'Socio'
 
   errors:
     title: 'Error'
@@ -43,7 +68,9 @@
     actions:
       logout: 'Salir de la aplicación'
     users: 'Usuarios'
-
+    payments: 'Pagos'
+    assistances: 'Asistencias'
+    partners: 'Socios'
   messages:
     confirmation: '¿Está seguro?'
 
