@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
   validates :name, :lastname, :email, :user, :length => { :maximum => 255 }, :allow_nil => true,
     :allow_blank => true
 
+  # Relations
+  has_many :partners
+  has_many :payments
+  has_many :assistances
+
   def initialize(attributes = nil, options = {})
     super(attributes, options)
 
