@@ -9,8 +9,9 @@
     <%= f.input :mobile_phone %>
     <%= f.input :email %>
     <%= f.input :document %>
+    <%= f.input :birth_date, :as => :date, :start_year => Date.today.year - 90,
+      :end_year => Date.today.year - 4 %>
     <%= f.input :admission_date %>
-    <%= f.input :birth_date %>
   </div>
 
   <div class="form-actions">
