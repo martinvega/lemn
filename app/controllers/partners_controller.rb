@@ -49,6 +49,7 @@ class PartnersController < ApplicationController
   def create
     @title = t('view.partners.new_title')
     @partner = Partner.new(params[:partner])
+    @partner.user = current_user
 
     respond_to do |format|
       if @partner.save
