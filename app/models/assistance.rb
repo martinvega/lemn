@@ -15,6 +15,10 @@ class Assistance < ActiveRecord::Base
   belongs_to :user
   belongs_to :partner
 
+  def self.filtered_list(query)
+    query.present? ?
+      where('date LIKE :q', :q => "%#{query}%") : scoped
+  end
 end
 
 
