@@ -78,4 +78,18 @@ module ApplicationHelper
 
     link_to '&#xe05a;'.html_safe, *args
   end
+
+  def calendar_text_field(form, attribute, year = false, time = false, value = nil)
+    value ||= form.object.send(attribute)
+    options = {:class => :calendar}
+    options[:value] = l(value, :format => time ? :minimal : :default) if value
+    options[:'data-time'] = true if time
+    options[:'data-year'] = true if year
+
+    form.text_field attribute, options
+  end
+
+  def dynamic_object_id(prefix, form_builder)
+    "#{prefix}_#{form_builder.object_name.to_s.gsub(/[_\]\[]+/, '_')}"
+  end
 end
