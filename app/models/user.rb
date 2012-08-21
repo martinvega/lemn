@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
-
-
   devise :database_authenticatable, :recoverable, :rememberable, :trackable,
     :validatable
 
@@ -47,6 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def self.filtered_list(query)
-    query.present? ? all : scoped
+    query.present? ?
+      where('name LIKE :q OR user LIKE :q OR lastname LIKE :q OR email LIKE :q', :q => "%#{query.downcase}%") : scoped
   end
 end
