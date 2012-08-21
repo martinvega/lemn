@@ -26,4 +26,10 @@ class Partner < ActiveRecord::Base
   has_many :assistances, :dependent => :destroy
   has_many :payments, :dependent => :destroy
 
+  def self.filtered_list(query)
+    query.present? ?
+      where('name LIKE :q OR lastname LIKE :q OR document LIKE :q OR email LIKE :q OR phone LIKE :q OR mobile_phone LIKE :q ',
+        :q => "%#{query}%"
+      ) : scoped
+  end
 end

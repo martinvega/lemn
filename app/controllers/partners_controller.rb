@@ -1,10 +1,12 @@
 class PartnersController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET /partners
   # GET /partners.json
   def index
     @title = t('view.partners.index_title')
-    @partners = Partner.page(params[:page])
+    @searchable = true
+    @partners = Partner.filtered_list(params[:q]).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
