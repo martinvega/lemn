@@ -18,3 +18,4 @@
 //= require common
 //= require date_pickers
 //= require mobile
+//= require autocomplete

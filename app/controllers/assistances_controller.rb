@@ -1,10 +1,12 @@
 class AssistancesController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET /assistances
   # GET /assistances.json
   def index
     @title = t('view.assistances.index_title')
-    @assistances = Assistance.page(params[:page])
+    @searchable = true
+    @assistances = Assistance.filtered_list(params[:q]).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,6 +31,8 @@ class AssistancesController < ApplicationController
   def new
     @title = t('view.assistances.new_title')
     @assistance = Assistance.new
+    @partner = Partner.new
+    @assistance.partner = @partner
 
     respond_to do |format|
       format.html # new.html.erb
@@ -87,6 +91,19 @@ class AssistancesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to assistances_url }
       format.json { head :ok }
+    end
+  end
+
+  # POST /assistances/auto_complete_for_partner
+  def autocomplete_for_partner
+    query = params[:q].sanitized_for_text_query
+    @query_terms = query.split(/\s+/).reject(&:blank?)
+    @partners = Question.scoped
+    @partners = @partners.full_text(@query_terms) unless @query_terms.empty?
+    @partners = @partners.limit(10)
+
+    respond_to do |format|
+      format.json { render :json => @partners }
     end
   end
 end

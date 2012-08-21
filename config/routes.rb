@@ -1,7 +1,15 @@
 LEMN::Application.routes.draw do
-  resources :payments
+  resources :payments do
+    collection do
+      post :autocomplete_for_partner
+    end
+  end
 
-  resources :assistances
+  resources :assistances do
+    collection do
+      post :autocomplete_for_partner
+    end
+  end
 
   resources :partners
 
