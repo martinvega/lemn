@@ -82,6 +82,39 @@
       empty_search:
         title:
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
+    assistances:
+      index_title: 'Listado de asistencias'
+      show_title: 'Detalle de asistencia'
+      new_title: 'Nueva asistencia'
+      edit_title: 'Modificar asistencia'
+      correctly_created: 'Asistencia agregada correctamente.'
+      correctly_updated: 'Asistencia actualizada correctamente.'
+      stale_object_error: 'La asistencia no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna asistencia hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva asistencia</span>'
+      new: 'Nueva asistencia'
+    partners:
+      index_title: 'Listado de socios'
+      show_title: 'Detalle de socio'
+      new_title: 'Nuevo socio'
+      edit_title: 'Modificar socio'
+      correctly_created: 'Socio agregado correctamente.'
+      correctly_updated: 'Socio actualizado correctamente.'
+      stale_object_error: 'El socio no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningún socio hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo socio</span>'
+      new: 'Nuevo socio'
+    payments:
+      index_title: 'Listado de pagos'
+      show_title: 'Detalle de pago'
+      new_title: 'Nuevo pago'
+      edit_title: 'Modificar pago'
+      correctly_created: 'Pago agregado correctamente.'
+      correctly_updated: 'Pago actualizado correctamente.'
+      stale_object_error: 'El pago no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningún pago hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo pago</span>'
+      new: 'Nuevo pago'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de usuario'
