@@ -2,7 +2,7 @@ class Assistance < ActiveRecord::Base
   has_paper_trail
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :date
+  attr_accessible :date, :lock_version
 
   # Default order
   default_scope order('date DESC')

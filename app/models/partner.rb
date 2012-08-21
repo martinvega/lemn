@@ -2,7 +2,8 @@ class Partner < ActiveRecord::Base
   has_paper_trail
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :address, :admission_date, :birth_date, :document, :email, :lastname, :mobile_phone, :name, :phone
+  attr_accessible :address, :admission_date, :birth_date, :document, :email, :lastname, :mobile_phone, :name,
+    :phone, :lock_version
 
   # Default order
   default_scope order('lastname DESC')

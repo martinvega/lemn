@@ -2,7 +2,7 @@ class Payment < ActiveRecord::Base
   has_paper_trail
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :amount, :concept, :date
+  attr_accessible :amount, :concept, :date, :lock_version
 
   # Default order
   default_scope order('date DESC')
