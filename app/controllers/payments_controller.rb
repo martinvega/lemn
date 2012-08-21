@@ -1,10 +1,13 @@
 class PaymentsController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET /payments
   # GET /payments.json
   def index
+    @user = current_user.user
     @title = t('view.payments.index_title')
-    @payments = Payment.page(params[:page])
+    @searchable = true
+    @payments = Payment.filtered_list(params[:q]).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

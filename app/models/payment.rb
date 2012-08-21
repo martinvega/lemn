@@ -18,4 +18,9 @@ class Payment < ActiveRecord::Base
   belongs_to :user
   belongs_to :partner
 
+  def self.filtered_list(query)
+    query.present? ?
+      where('date LIKE :q OR concept LIKE :q', :q => "%#{query.downcase}%") : scoped
+  end
+
 end
