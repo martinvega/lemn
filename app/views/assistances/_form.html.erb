@@ -1,13 +1,8 @@
 <%= simple_form_for(@assistance) do |f| %>
-  <%= content_for :js_extra do %>
-    <%= raw "var partner='#{escape_javascript(render(:partial => 'partner',
-        :object => Partner.new, :locals => {:f => f}))}';" %>
-  <% end %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :partner_id %>
-    <%= render :partial => 'partner', :locals => {:f => f, :partner => @assistance.partner} %>
+    <%= f.association :partner, :prompt => 'Seleccione el socio', :wrapper_html => { :id => 'select2' } %>
     <%= f.label :date %>
     <%= calendar_text_field f, :date %>
   </div>

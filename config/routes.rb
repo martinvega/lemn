@@ -5,11 +5,7 @@ LEMN::Application.routes.draw do
     end
   end
 
-  resources :assistances do
-    collection do
-      post :autocomplete_for_partner
-    end
-  end
+  resources :assistances
 
   resources :partners
 

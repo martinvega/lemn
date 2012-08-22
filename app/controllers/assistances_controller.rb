@@ -93,17 +93,4 @@ class AssistancesController < ApplicationController
       format.json { head :ok }
     end
   end
-
-  # POST /assistances/auto_complete_for_partner
-  def autocomplete_for_partner
-    query = params[:q].sanitized_for_text_query
-    @query_terms = query.split(/\s+/).reject(&:blank?)
-    @partners = Question.scoped
-    @partners = @partners.full_text(@query_terms) unless @query_terms.empty?
-    @partners = @partners.limit(10)
-
-    respond_to do |format|
-      format.json { render :json => @partners }
-    end
-  end
 end
