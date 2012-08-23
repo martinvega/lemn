@@ -53,6 +53,18 @@ module ApplicationHelper
     result + page_entries
   end
 
+  def link_to_show(*args)
+    options = args.extract_options!
+
+    options['class'] ||= 'iconic'
+    options['title'] ||= t('label.show')
+    options['data-show-tooltip'] ||= true
+
+    args << options
+
+    link_to '&#xe074;'.html_safe, *args
+  end
+
   def link_to_edit(*args)
     options = args.extract_options!
 
@@ -77,16 +89,6 @@ module ApplicationHelper
     args << options
 
     link_to '&#xe05a;'.html_safe, *args
-  end
-
-  def calendar_text_field(form, attribute, year = false, time = false, value = nil)
-    value ||= form.object.send(attribute)
-    options = {:class => :calendar}
-    options[:value] = l(value, :format => time ? :minimal : :default) if value
-    options[:'data-time'] = true if time
-    options[:'data-year'] = true if year
-
-    form.text_field attribute, options
   end
 
   def dynamic_object_id(prefix, form_builder)

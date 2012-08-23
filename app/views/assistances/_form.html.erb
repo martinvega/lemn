@@ -1,10 +1,11 @@
+
 <%= simple_form_for(@assistance) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :partner, :prompt => 'Seleccione el socio', :wrapper_html => { :id => 'select2' } %>
-    <%= f.label :date %>
-    <%= calendar_text_field f, :date %>
+    <%= f.input :partner_id, :collection => Partner.all, :placeholder => t('view.partners.placeholder'),
+      :label_method => :to_s %>
+    <%= f.input :date, :as => :string, :input_html => { :class => 'calendar' } %>
   </div>
 
   <div class="form-actions">

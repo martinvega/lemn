@@ -9,10 +9,8 @@
     <%= f.input :mobile_phone %>
     <%= f.input :email %>
     <%= f.input :document %>
-    <%= f.label :birth_date %>
-    <%= calendar_text_field f, :birth_date, true %>
-    <%= f.label :admission_date %>
-    <%= calendar_text_field f, :admission_date %>
+    <%= f.input :birth_date, :as => :string, :input_html => { :class => 'calendar', :'data-year' => true } %>
+    <%= f.input :admission_date, :as => :string, :input_html => { :class => 'calendar', :'data-year' => true } %>
   </div>
 
   <div class="form-actions">

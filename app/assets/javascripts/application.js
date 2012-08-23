@@ -18,3 +18,5 @@
 //= require common
 //= require date_pickers
 //= require mobile
+//= require select2
+//= require partners
