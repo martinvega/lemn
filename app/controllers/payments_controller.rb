@@ -6,8 +6,15 @@ class PaymentsController < ApplicationController
   def index
     @user = current_user.user
     @title = t('view.payments.index_title')
-    @searchable = true
-    @payments = Payment.filtered_list(params[:q]).page(params[:page])
+
+    if params[:partner_id]
+      @payments = Payment.by_partner(params[:partner_id])
+      @searchable = false
+    else
+      @payments = Payment.filtered_list(params[:q]).page(params[:page])
+      @searchable = true
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

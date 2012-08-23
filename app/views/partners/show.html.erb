@@ -41,5 +41,7 @@
 </div>
 <div class="form-actions">
   <%= link_to t('label.edit'), edit_partner_path(@partner) if can? :update, @partner %> |
+  <%= link_to t('view.partners.check_payments'), payments_path(:partner_id => @partner.id) %> |
+  <%= link_to t('view.partners.check_assistances'), assistances_path(:partner_id => @partner.id) %> |
   <%= link_to t('label.list'), partners_path %>
 </div>

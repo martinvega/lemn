@@ -5,8 +5,13 @@ class AssistancesController < ApplicationController
   # GET /assistances.json
   def index
     @title = t('view.assistances.index_title')
-    @searchable = true
-    @assistances = Assistance.filtered_list(params[:q]).page(params[:page])
+    @searchable = false
+
+    if params[:partner_id]
+      @assistances = Assistance.by_partner(params[:partner_id]).page(params[:page])
+    else
+      @assistances = Assistance.filtered_list(params[:q]).page(params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
