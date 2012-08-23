@@ -33,4 +33,5 @@ class Partner < ActiveRecord::Base
         :q => "%#{query}%"
       ) : scoped
   end
+
 end
