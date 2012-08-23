@@ -95,6 +95,8 @@
       new: 'Nueva asistencia'
     partners:
       placeholder: 'Seleccione el socio'
+      check_payments: 'Consultar Pagos'
+      check_assistances: 'Consultar Asistencias'
       index_title: 'Listado de socios'
       show_title: 'Detalle de socio'
       new_title: 'Nuevo socio'
