@@ -2,12 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :partner_id, :collection => Partner.all, :placeholder => t('view.partners.placeholder'),
+      :label_method => :to_s %>
     <%= f.input :concept %>
     <%= f.input :amount %>
-    <%= f.input :partner_id %>
-    <%= f.label :date %>
-    <%= calendar_text_field f, :date %>
-
+    <%= f.input :date, :as => :string, :input_html => { :class => 'calendar' } %>
   </div>
 
   <div class="form-actions">
