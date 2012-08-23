@@ -34,4 +34,8 @@ class Partner < ActiveRecord::Base
       ) : scoped
   end
 
+  def to_s
+    [self.name, self.lastname].compact.join(' ')
+  end
+
 end
