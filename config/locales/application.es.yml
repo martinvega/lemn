@@ -48,6 +48,7 @@
         amount: 'Monto'
         concept: 'Concepto'
         partner_id: 'Socio'
+        next_payment_date: 'Vencimiento pago'
 
   errors:
     title: 'Error'

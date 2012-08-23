@@ -2,7 +2,8 @@ class Payment < ActiveRecord::Base
   has_paper_trail
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :amount, :concept, :date, :lock_version
+  attr_accessible :amount, :concept, :date, :lock_version, :partner_id
+  attr_reader :next_payment_date
 
   # Default order
   default_scope order('date DESC')
@@ -26,4 +27,7 @@ class Payment < ActiveRecord::Base
       where('date LIKE :q OR concept LIKE :q', :q => "%#{query.downcase}%") : scoped
   end
 
+  def next_payment_date
+    self.date.next_month
+  end
 end
