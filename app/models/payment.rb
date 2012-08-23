@@ -7,6 +7,9 @@ class Payment < ActiveRecord::Base
   # Default order
   default_scope order('date DESC')
 
+  # Named scopes
+  scope :by_partner, lambda { |id| where('partner_id = ?', id) }
+
   # Validations
   validates :date, :amount, :concept, :partner_id, :user_id, :presence => true
   validates :concept, :length => { :maximum => 255 }, :allow_nil => true, :allow_blank => true

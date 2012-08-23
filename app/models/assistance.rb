@@ -7,6 +7,9 @@ class Assistance < ActiveRecord::Base
   # Default order
   default_scope order('date DESC')
 
+  # Named scopes
+  scope :by_partner, lambda { |id| where('partner_id = ?', id) }
+
   # Validations
   validates :date, :partner_id, :user_id, :presence => true
   validates_date :date, :on_or_before => lambda { Date.current }, :allow_nil => true, :allow_blank => true
