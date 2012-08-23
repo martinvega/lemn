@@ -57,6 +57,7 @@ class PaymentsController < ApplicationController
   def create
     @title = t('view.payments.new_title')
     @payment = Payment.new(params[:payment])
+    @payment.user = current_user
 
     respond_to do |format|
       if @payment.save
