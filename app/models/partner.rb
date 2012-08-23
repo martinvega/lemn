@@ -29,7 +29,7 @@ class Partner < ActiveRecord::Base
 
   def self.filtered_list(query)
     query.present? ?
-      where('name LIKE :q OR lastname LIKE :q OR document LIKE :q OR email LIKE :q OR phone LIKE :q OR mobile_phone LIKE :q ',
+      where('name ILIKE :q OR lastname ILIKE :q OR email ILIKE :q OR address ILIKE :q',
         :q => "%#{query}%"
       ) : scoped
   end
