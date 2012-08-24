@@ -44,6 +44,6 @@
 
   <%= link_to(
     t('view.payments.next_payments'),
-    payments_path, :class => 'btn btn-primary', :next_payments => true
+    payments_path(:next_payments => true), :class => 'btn btn-primary'
   ) if can? :create, Payment %>
 </div>
