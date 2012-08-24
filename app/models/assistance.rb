@@ -12,7 +12,7 @@ class Assistance < ActiveRecord::Base
 
   # Validations
   validates :date, :partner_id, :user_id, :presence => true
-  validates_date :date, :on_or_before => lambda { Date.current }, :allow_nil => true, :allow_blank => true
+  validates_date :date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
 
   # Relations
   belongs_to :user
