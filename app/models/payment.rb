@@ -36,4 +36,8 @@ class Payment < ActiveRecord::Base
   def next_payment_date
     self.date.next_month
   end
+
+  def to_s
+    self.concept
+  end
 end
