@@ -6,10 +6,10 @@
       <table class="table resource-list">
         <thead>
           <tr>
-            <th><%= Payment.human_attribute_name 'date' %></th>
-            <th><%= Payment.human_attribute_name 'amount' %></th>
-            <th><%= Payment.human_attribute_name 'concept' %></th>
             <th><%= Payment.human_attribute_name 'partner_id' %></th>
+            <th><%= Payment.human_attribute_name 'date' %></th>
+            <th><%= Payment.human_attribute_name 'concept' %></th>
+            <th><%= Payment.human_attribute_name 'amount' %></th>
             <th><%= Payment.human_attribute_name 'next_payment_date' %></th>
             <th colspan="3"></th>
           </tr>
@@ -18,10 +18,10 @@
         <tbody>
           <% @payments.each do |payment| %>
             <tr>
-              <td><%= payment.date %></td>
-              <td><%= payment.amount %></td>
-              <td><%= payment.concept %></td>
               <td><%= payment.partner.to_s %></td>
+              <td><%= payment.date %></td>
+              <td><%= payment.concept %></td>
+              <td><%= payment.amount %></td>
               <td><%= payment.next_payment_date %></td>
               <td><%= link_to_show payment %></td>
               <td><%= link_to_edit edit_payment_path(payment) if can? :update, payment %></td>
