@@ -109,6 +109,7 @@
         html: 'No se ha creado ningún socio hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo socio</span>'
       new: 'Nuevo socio'
     payments:
+      next_payments: 'Próximos vencimientos'
       index_title: 'Listado de pagos'
       show_title: 'Detalle de pago'
       new_title: 'Nuevo pago'

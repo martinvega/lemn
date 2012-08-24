@@ -8,7 +8,10 @@ class PaymentsController < ApplicationController
     @title = t('view.payments.index_title')
 
     if params[:partner_id]
-      @payments = Payment.by_partner(params[:partner_id])
+      @payments = Payment.by_partner(params[:partner_id]).page(params[:page])
+      @searchable = false
+    elsif params[:next_payments]
+      @payments = Payment.distinct_partner.next_payments.page(params[:page])
       @searchable = false
     else
       @payments = Payment.filtered_list(params[:q]).page(params[:page])
