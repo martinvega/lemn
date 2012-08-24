@@ -27,11 +27,11 @@
   </p>
   <p>
     <strong><%= Partner.human_attribute_name 'admission_date' %></strong>:
-    <%= @partner.admission_date %>
+    <%= l @partner.admission_date, :format => :long %>
   </p>
   <p>
     <strong><%= Partner.human_attribute_name 'birth_date' %></strong>:
-    <%= @partner.birth_date %>
+    <%= l @partner.birth_date, :format => :long %>
   </p>
   <p>
     <strong><%= Partner.human_attribute_name 'document' %></strong>:

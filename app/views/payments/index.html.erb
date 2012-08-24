@@ -19,10 +19,10 @@
           <% @payments.each do |payment| %>
             <tr>
               <td><%= payment.partner.to_s %></td>
-              <td><%= payment.date %></td>
+              <td><%= l payment.date, :format => :long %></td>
               <td><%= payment.concept %></td>
               <td><%= payment.amount %></td>
-              <td><%= payment.next_payment_date %></td>
+              <td><%= l payment.next_payment_date, :format => :long %></td>
               <td><%= link_to_show payment %></td>
               <td><%= link_to_edit edit_payment_path(payment) if can? :update, payment %></td>
               <td><%= link_to_destroy payment if can? :destroy, payment %></td>

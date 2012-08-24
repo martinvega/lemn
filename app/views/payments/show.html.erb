@@ -8,7 +8,7 @@
 
   <p>
     <strong><%= Payment.human_attribute_name 'date' %></strong>:
-    <%= @payment.date %>
+    <%= l @payment.date, :format => :long %>
   </p>
 
   <p>

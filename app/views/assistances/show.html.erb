@@ -3,13 +3,13 @@
 
   <p>
     <strong><%= Assistance.human_attribute_name 'date' %></strong>:
-    <%= @assistance.date %>
+    <%= l @assistance.date, :format => :long %>
   </p>
   <p>
     <strong><%= Assistance.human_attribute_name 'partner_id' %></strong>:
     <%= @assistance.partner_id %>
   </p>
-  
+
 </div>
 <div class="form-actions">
   <%= link_to t('label.edit'), edit_assistance_path(@assistance) if can? :update, @assistance %> |
