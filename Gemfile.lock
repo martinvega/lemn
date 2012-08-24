@@ -80,9 +80,6 @@ GEM
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
-    magick_columns (0.0.3)
-      rails (~> 3.2)
-      timeliness (~> 0.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -185,7 +182,6 @@ DEPENDENCIES
   fabrication
   faker
   jquery-rails
-  magick_columns
   minitest
   paper_trail
   pg
