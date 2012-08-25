@@ -11,6 +11,7 @@ class Partner < ActiveRecord::Base
   # Validations
   validates :name, :lastname, :user_id, :presence => true
   validates :document, :email, :uniqueness => true, :allow_nil => true, :allow_blank => true
+  validates :name, :uniqueness => { :scope => :lastname }, :allow_nil => true, :allow_blank => true
   validates :address, :document, :email, :lastname, :mobile_phone, :name, :phone, :length => { :maximum => 255 },
     :allow_nil => true, :allow_blank => true
   validates :mobile_phone, :phone, :document, :numericality => { :only_integer => true }, :allow_nil => true,
