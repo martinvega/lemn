@@ -13,6 +13,7 @@ class Assistance < ActiveRecord::Base
   # Validations
   validates :date, :partner_id, :user_id, :presence => true
   validates_date :date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
+  validates :date, :uniqueness => { :scope => :partner_id }
 
   # Relations
   belongs_to :user

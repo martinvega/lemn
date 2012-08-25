@@ -21,8 +21,8 @@ class Payment < ActiveRecord::Base
   validates :date, :amount, :concept, :partner_id, :user_id, :presence => true
   validates :concept, :length => { :maximum => 255 }, :allow_nil => true, :allow_blank => true
   validates :amount, :numericality => { :maximum => 9999 }, :allow_nil => true, :allow_blank => true
-  validates_date :date, :on_or_before => :today, :allow_nil => true,
-    :allow_blank => true
+  validates_date :date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
+  validates :date, :uniqueness => { :scope => :partner_id }
 
   # Relations
   belongs_to :user
