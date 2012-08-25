@@ -15,7 +15,8 @@ class Partner < ActiveRecord::Base
     :allow_nil => true, :allow_blank => true
   validates :mobile_phone, :phone, :document, :numericality => { :only_integer => true }, :allow_nil => true,
     :allow_blank => true
-  validates_date :birth_date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
+  validates_date :birth_date, :on_or_before => lambda { 4.years.from_now.to_date },
+    :allow_nil => true, :allow_blank => true
   validates_date :admission_date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
   validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
     :allow_nil => true, :allow_blank => true
