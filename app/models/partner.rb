@@ -6,7 +6,7 @@ class Partner < ActiveRecord::Base
     :phone, :lock_version
 
   # Default order
-  default_scope order('lastname DESC')
+  default_scope order('name ASC')
 
   # Validations
   validates :name, :lastname, :user_id, :presence => true
