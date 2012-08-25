@@ -56,6 +56,7 @@ class AssistancesController < ApplicationController
   def create
     @title = t('view.assistances.new_title')
     @assistance = Assistance.new(params[:assistance])
+    @assistance.user = current_user
 
     respond_to do |format|
       if @assistance.save
