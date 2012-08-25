@@ -22,22 +22,29 @@
     <%= @partner.mobile_phone %>
   </p>
   <p>
+    <strong><%= Partner.human_attribute_name 'document' %></strong>:
+    <%= @partner.document %>
+  </p>
+  <p>
     <strong><%= Partner.human_attribute_name 'email' %></strong>:
     <%= @partner.email %>
   </p>
-  <p>
-    <strong><%= Partner.human_attribute_name 'admission_date' %></strong>:
-    <%= l @partner.admission_date, :format => :long %>
-  </p>
-  <p>
-    <strong><%= Partner.human_attribute_name 'birth_date' %></strong>:
-    <%= l @partner.birth_date, :format => :long %>
-  </p>
+  <% if @partner.admission_date %>
+    <p>
+      <strong><%= Partner.human_attribute_name 'admission_date' %></strong>:
+      <%= l @partner.admission_date, :format => :long %>
+    </p>
+  <% end %>
+  <% if @partner.birth_date %>
+    <p>
+      <strong><%= Partner.human_attribute_name 'birth_date' %></strong>:
+      <%= l @partner.birth_date, :format => :long %>
+    </p>
+  <% end %>
   <p>
     <strong><%= Partner.human_attribute_name 'document' %></strong>:
     <%= @partner.document %>
   </p>
-
 </div>
 <div class="form-actions">
   <%= link_to t('label.edit'), edit_partner_path(@partner) if can? :update, @partner %> |
