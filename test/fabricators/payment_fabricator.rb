@@ -1,6 +1,7 @@
 Fabricator(:payment) do
-  date       "2012-08-11"
+  date       { Date.today }
   amount     1.5
-  concept    "MyString"
-  partner_id 1
+  concept    { Faker::Lorem.words(4).join(' ') }
+  partner_id { Fabricate(:partner).id }
+  user_id    { Fabricate(:user).id }
 end

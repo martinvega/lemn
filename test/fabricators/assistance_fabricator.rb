@@ -1,4 +1,5 @@
 Fabricator(:assistance) do
-  date       "2012-08-11"
-  partner_id 1
+  date       { Date.today }
+  partner_id { Fabricate(:partner).id }
+  user_id    { Fabricate(:user).id }
 end
