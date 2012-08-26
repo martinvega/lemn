@@ -9,11 +9,11 @@ class PaymentsController < ApplicationController
     @searchable = false
 
     if params[:partner_id]
-      @payments = Payment.by_partner(params[:partner_id]).page(params[:page])
+      @payments = Payment.by_partner(params[:partner_id]).order.page(params[:page])
     elsif params[:next_payments]
       @payments = Payment.distinct_partner.next_payments.page(params[:page])
     else
-      @payments = Payment.filtered_list(params[:q]).page(params[:page])
+      @payments = Payment.filtered_list(params[:q]).order.page(params[:page])
     end
 
     respond_to do |format|
