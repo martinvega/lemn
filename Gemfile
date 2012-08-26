@@ -29,6 +29,6 @@ group :test do
   gem 'minitest', :require => false
   gem 'capybara', :require => false
   gem 'database_cleaner' # For Capybara
-  gem 'fabrication'
+  gem 'fabrication', '1.2.0'
   gem 'faker'
 end
