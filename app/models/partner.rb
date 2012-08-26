@@ -12,11 +12,11 @@ class Partner < ActiveRecord::Base
   validates :name, :lastname, :user_id, :presence => true
   validates :document, :email, :uniqueness => true, :allow_nil => true, :allow_blank => true
   validates :name, :uniqueness => { :scope => :lastname }, :allow_nil => true, :allow_blank => true
-  validates :address, :document, :email, :lastname, :mobile_phone, :name, :phone, :length => { :maximum => 255 },
+  validates :address, :email, :lastname, :mobile_phone, :name, :phone, :length => { :maximum => 255 },
     :allow_nil => true, :allow_blank => true
   validates :mobile_phone, :phone, :document, :numericality => { :only_integer => true }, :allow_nil => true,
     :allow_blank => true
-  validates_date :birth_date, :on_or_before => lambda { 4.years.from_now.to_date },
+  validates_date :birth_date, :on_or_before => lambda { Date.today.years_ago 4 },
     :allow_nil => true, :allow_blank => true
   validates_date :admission_date, :on_or_before => :today, :allow_nil => true, :allow_blank => true
   validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
