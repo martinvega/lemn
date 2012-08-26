@@ -47,7 +47,7 @@ class ActionDispatch::IntegrationTest
 
     assert_page_has_no_errors!
 
-    fill_in 'user_email', :with => user.email
+    fill_in 'user_user', :with => user.user
     fill_in 'user_password', :with => '123456'
 
     find('.btn.btn-primary').click
