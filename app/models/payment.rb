@@ -9,12 +9,15 @@ class Payment < ActiveRecord::Base
   default_scope order('date DESC')
 
   # Named scopes
-  scope :by_partner, lambda { |id| where('partner_id = ?', id) }
-  scope :distinct_partner, select('distinct partner_id')
-  scope :next_payments, lambda {
-    where('date between :start AND :end',
-      :start => Date.today - 3.months,
-      :end => Date.today.prev_month + 3.days
+  scope :order_date, lambda { |order|
+    order('date ?', order)}
+  scope :by_partner, lambda { |id|
+    where('partner_id = ?', id)
+  }
+  scope :between_dates, lambda { |from, to|
+    where('date between :from AND :to',
+      :from => from,
+      :to => to
     )
   }
   # Validations
@@ -39,5 +42,28 @@ class Payment < ActiveRecord::Base
 
   def to_s
     self.concept
+  end
+
+  def self.filtered_by_date(expired = false)
+    if expired
+      payments = Payment.between_dates(3.months.ago.to_date, 1.month.ago.to_date)
+    else
+      payments = Payment.between_dates(1.month.ago.to_date + 1, 1.month.ago.to_date + 7)
+    end
+
+    filtered_payments = []
+    ids = []
+
+    payments.each do |p|
+      unless ids.include? p.partner_id
+        ids << p.partner_id
+        filtered_payments << p
+      end
+    end
+    if expired
+      filtered_payments
+    else
+      filtered_payments.reverse!
+    end
   end
 end
