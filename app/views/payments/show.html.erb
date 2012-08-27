@@ -23,6 +23,8 @@
 
 </div>
 <div class="form-actions">
-  <%= link_to t('label.edit'), edit_payment_path(@payment) if can? :update, @payment %> |
-  <%= link_to t('label.list'), payments_path %>
+  <%= link_to t('label.edit'), edit_payment_path(@payment), :class => 'btn btn-primary' if can? :update, @payment %>
+  <div class="pull-right">
+    <%= link_to t('label.list'), payments_path %>
+  </div>
 </div>

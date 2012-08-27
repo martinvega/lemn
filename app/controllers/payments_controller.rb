@@ -2,6 +2,9 @@ class PaymentsController < ApplicationController
   require 'will_paginate/array'
   before_filter :authenticate_user!
 
+  check_authorization
+  load_and_authorize_resource
+
   # GET /payments
   # GET /payments.json
   def index

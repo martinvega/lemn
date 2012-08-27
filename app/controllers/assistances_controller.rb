@@ -1,6 +1,9 @@
 class AssistancesController < ApplicationController
   before_filter :authenticate_user!
 
+  check_authorization
+  load_and_authorize_resource
+
   # GET /assistances
   # GET /assistances.json
   def index

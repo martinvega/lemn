@@ -14,7 +14,7 @@
 </div>
 
 <nav class="form-actions">
-  <%= link_to t('label.edit'), edit_user_path(@user), :class => 'btn btn-primary' %>
+  <%= link_to t('label.edit'), edit_user_path(@user), :class => 'btn btn-primary' if can? :update, @user %>
   <div class="pull-right">
     <%= link_to t('label.list'), users_path %>
   </div>

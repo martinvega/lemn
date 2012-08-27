@@ -44,10 +44,10 @@
 
   <%= link_to(
     t('view.payments.expired'),
-    payments_path(:expired => true), :class => 'btn btn-primary'
-  ) if can? :create, Payment %>
+    payments_path(:expired => true), :class => 'btn'
+  ) %>
   <%= link_to(
     t('view.payments.next_to_expire'),
-    payments_path(:next_to_expire => true), :class => 'btn btn-primary'
-  ) if can? :create, Payment %>
+    payments_path(:next_to_expire => true), :class => 'btn'
+  ) %>
 </div>
