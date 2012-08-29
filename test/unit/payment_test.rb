@@ -64,12 +64,12 @@ class PaymentTest < ActiveSupport::TestCase
   end
 
   test 'validates dates attributes' do
-    @payment.date = Date.tomorrow
+    @payment.date = 8.days.from_now.to_date
 
     assert @payment.invalid?
     assert_equal 1, @payment.errors.size
     assert_equal [
-      I18n.t('errors.messages.on_or_before', :restriction => I18n.l(Date.today))
+      I18n.t('errors.messages.on_or_before', :restriction => I18n.l(7.days.from_now.to_date))
     ], @payment.errors[:date]
   end
 
