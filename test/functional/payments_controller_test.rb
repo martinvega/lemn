@@ -12,7 +12,6 @@ class PaymentsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:payments)
-    assert_not_nil assigns(:payments)
     assert_select '#unexpected_error', false
     assert_template 'payments/index'
 
@@ -85,5 +84,21 @@ class PaymentsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to payments_path
+  end
+
+  test "should get last expired payments" do
+    sign_in @user
+
+    expired_1 = Fabricate(:payment, :date => Date.today.prev_month)
+    expired_2 = Fabricate(:payment, :date => Date.today.prev_month, :user_id => expired_1.user.id)
+
+    get :index, expired => true
+    assert_response :sucess
+    assert_equal assigns(:payments), 1
+
+  end
+
+  test "should get next to expire payments" do
+
   end
 end
