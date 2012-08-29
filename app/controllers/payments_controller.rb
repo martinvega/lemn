@@ -8,7 +8,6 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   def index
-    @user = current_user.user
     @title = t('view.payments.index_title')
     @searchable = false
 
