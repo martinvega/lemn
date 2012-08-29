@@ -119,7 +119,7 @@
       correctly_updated: 'Pago actualizado correctamente.'
       stale_object_error: 'El pago no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningún pago hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo pago</span>'
+        html: 'No se ha encontrado ningún pago.'
       new: 'Nuevo pago'
     users:
       index_title: 'Listado de usuarios'
