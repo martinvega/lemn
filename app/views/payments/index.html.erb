@@ -17,12 +17,13 @@
 
         <tbody>
           <% @payments.each do |payment| %>
+            <% style = payment.get_style %>
             <tr>
               <td><%= link_to l(payment.date, :format => :long), payment, :title => t('label.show') %></td>
               <td><%= link_to payment.concept, payment, :title => t('label.show') %></td>
               <td><%= link_to payment.amount, payment, :title => t('label.show') %></td>
-              <td><%= payment.partner.to_s %></td>
-              <td><%= l payment.next_payment_date, :format => :long %></td>
+              <td <%= style %>><%= payment.partner.to_s %></td>
+              <td <%= style %>><%= l payment.next_payment_date, :format => :long %></td>
               <td><%= link_to_edit edit_payment_path(payment) if can? :update, payment %></td>
               <td><%= link_to_destroy payment if can? :destroy, payment %></td>
             </tr>

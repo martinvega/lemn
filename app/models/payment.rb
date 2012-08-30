@@ -42,29 +42,18 @@ class Payment < ActiveRecord::Base
     self.concept
   end
 
-  def self.next_to_expire
-    payments = Payment.between_dates(1.month.ago.to_date + 1, 1.month.ago.to_date + 7)
-
-    filtered_payments = []
-    ids = []
-
-    payments.each do |p|
-      id = p.partner_id
-      if ids.exclude? id
-        ids << id
-        filtered_payments << p
-      end
+  def self.expired_or_next_to(expired = false)
+    if expired
+      payments = Payment.between_dates(3.months.ago.to_date, 1.month.ago.to_date)
+      not_expired = Payment.select('partner_id').between_dates(1.month.ago.to_date + 1, Date.today).map(
+        &:partner_id
+      )
+    else
+      payments = Payment.between_dates(1.month.ago.to_date + 1, 1.month.ago.to_date + 7)
+      not_expired = Payment.select('partner_id').between_dates(7.days.ago.to_date, 7.days.from_now.to_date).map(
+        &:partner_id
+      )
     end
-
-    filtered_payments.reverse!
-  end
-
-  def self.expired
-    payments = Payment.between_dates(3.months.ago.to_date, 1.month.ago.to_date)
-    not_expired = Payment.select('partner_id').between_dates(1.month.ago.to_date + 1, Date.today).map(
-      &:partner_id
-    )
-
     filtered_payments = []
     ids = []
 
@@ -76,6 +65,22 @@ class Payment < ActiveRecord::Base
       end
     end
 
-    filtered_payments
+    if expired
+      filtered_payments
+    else
+      filtered_payments.reverse!
+    end
+  end
+
+  def get_style
+    if self.date <= Date.today.prev_month
+      style = "class='expired'"
+    elsif self.date > Date.today.prev_month && self.date <= 24.days.ago.to_date
+      style = "class='next_to_expire'"
+    else
+      style = nil
+    end
+
+    style
   end
 end
