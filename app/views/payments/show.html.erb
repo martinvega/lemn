@@ -1,5 +1,6 @@
 <div class="readonly-data">
-  <h2><%= @payment %></h2>
+
+  <h2 <%= @payment.get_style %>><%= @payment %></h2>
 
   <p>
     <strong><%= Payment.human_attribute_name 'partner_id' %></strong>:
