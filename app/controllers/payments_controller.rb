@@ -14,9 +14,9 @@ class PaymentsController < ApplicationController
     if params[:partner_id]
       @payments = Payment.by_partner(params[:partner_id]).page(params[:page])
     elsif params[:expired]
-      @payments = Payment.expired.paginate(:page => params[:page], :per_page => 12)
+      @payments = Payment.expired_or_next_to(true).paginate(:page => params[:page], :per_page => 12)
     elsif params[:next_to_expire]
-      @payments = Payment.next_to_expire.paginate(:page => params[:page], :per_page => 12)
+      @payments = Payment.expired_or_next_to.paginate(:page => params[:page], :per_page => 12)
     else
       @payments = Payment.filtered_list(params[:q]).page(params[:page])
     end
