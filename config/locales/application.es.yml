@@ -44,7 +44,7 @@
         admission_date: 'Fecha de ingreso'
         document: 'D.N.I.'
       payment:
-        date: 'Fecha'
+        date: 'Fecha de pago'
         amount: 'Monto'
         concept: 'Concepto'
         partner_id: 'Socio'
