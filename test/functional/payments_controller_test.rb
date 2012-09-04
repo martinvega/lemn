@@ -86,19 +86,47 @@ class PaymentsControllerTest < ActionController::TestCase
     assert_redirected_to payments_path
   end
 
-  test "should get last expired payments" do
+  test "should get last expired payments by partner" do
     sign_in @user
 
-    expired_1 = Fabricate(:payment, :date => Date.today.prev_month)
-    expired_2 = Fabricate(:payment, :date => Date.today.prev_month, :user_id => expired_1.user.id)
+    expired = Fabricate(:payment, :date => Date.today.prev_month)
+    Fabricate(:payment, :date => 40.days.ago.to_date, :partner_id => expired.partner.id)
 
-    get :index, expired => true
-    assert_response :sucess
-    assert_equal assigns(:payments), 1
+    # Before payment
+    get :index, :expired => true
+#    assert_response :sucess
+    assert_equal assigns(:payments).size, 1
+    assert_select '#unexpected_error', false
+    assert_template 'payments/index'
 
+    Fabricate(:payment, :date => Date.today, :partner_id => expired.partner.id)
+
+    # After payment
+    get :index, :expired => true
+#    assert_response :sucess
+    assert_equal assigns(:payments).size, 0
+    assert_select '#unexpected_error', false
+    assert_template 'payments/index'
   end
 
-  test "should get next to expire payments" do
+  test "should get next to expire payments by user" do
+    sign_in @user
 
+    next_to_expire = Fabricate(:payment, :date => 27.days.ago.to_date)
+    Fabricate(:payment, :date => 37.days.ago.to_date, :partner_id => next_to_expire.partner.id)
+
+    # Before payment
+    get :index, :next_to_expire => true
+    assert_equal assigns(:payments).size, 1
+    assert_select '#unexpected_error', false
+    assert_template 'payments/index'
+
+    Fabricate(:payment, :date => 3.days.from_now.to_date, :partner_id => next_to_expire.partner.id)
+
+    # After payment
+    get :index, :next_to_expire => true
+    assert_equal assigns(:payments).size, 0
+    assert_select '#unexpected_error', false
+    assert_template 'payments/index'
   end
 end
