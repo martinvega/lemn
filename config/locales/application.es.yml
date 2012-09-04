@@ -109,6 +109,9 @@
         html: 'No se ha creado ningún socio hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo socio</span>'
       new: 'Nuevo socio'
     payments:
+      list_by_date: 'Listado de cuotas al'
+      to_pdf: 'Exportar a PDF'
+      pdf_name: 'listado-cuotas'
       expired: 'Cuotas vencidas'
       next_to_expire: 'Cuotas próximas a vencer'
       index_title: 'Listado de pagos'

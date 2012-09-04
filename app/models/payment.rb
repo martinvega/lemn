@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Payment < ActiveRecord::Base
   has_paper_trail
 
@@ -82,5 +83,68 @@ class Payment < ActiveRecord::Base
     end
 
     style
+  end
+
+  def self.to_pdf(payments, user)
+    pdf = Prawn::Document.new(PDF_OPTIONS)
+    pdf.font_size = PDF_FONT_SIZE
+
+    # Imagen
+    image = "#{Rails.root.to_s}/public/images/pdf_logo.jpg"
+    pdf.image image, :scale => 0.1
+
+    # Encabezado
+    pdf.font_size((PDF_FONT_SIZE * 0.7).round) do
+      pdf.move_down pdf.font_size
+      pdf.text "Generado por #{user}", :align => :right
+      pdf.move_down pdf.font_size
+    end
+
+    # Título
+    pdf.font_size((PDF_FONT_SIZE * 1.1).round) do
+      pdf.move_down pdf.font_size
+      date = I18n.l(Date.today, :format => :long)
+      pdf.text "#{I18n.t('view.payments.list_by_date')} #{date}", :style => :bold, :align => :center
+      pdf.move_down pdf.font_size
+    end
+
+    # Variables tabla
+    data = []
+
+    data[0] = [I18n.t('activerecord.attributes.payment.date'), I18n.t('activerecord.attributes.payment.concept'),
+      I18n.t('activerecord.attributes.payment.amount'), I18n.t('activerecord.attributes.payment.partner_id'),
+      I18n.t('activerecord.attributes.payment.next_payment_date') ]
+
+    payments.each_with_index do |payment, i|
+      data[i+1] = [I18n.l(payment.date, :format => :long), payment.concept, payment.amount, payment.partner.to_s,
+        I18n.l(payment.next_payment_date, :format => :long)]
+    end
+
+    pdf.font_size((PDF_FONT_SIZE * 0.6).round) do
+      pdf.move_down pdf.font_size
+      pdf.table data, :row_colors => ["FFFFFF","DDDDDD"],
+        :width => pdf.margin_box.width
+    end
+    # Numeración en pie de página
+    pdf.page_count.times do |i|
+      pdf.go_to_page(i+1)
+      pdf.draw_text "#{i+1} / #{pdf.page_count}", :at=>[1,1], :size => (PDF_FONT_SIZE * 0.75).round
+    end
+
+    FileUtils.mkdir_p File.dirname(Payment.pdf_full_path)
+    pdf.render_file Payment.pdf_full_path
+
+  end
+
+  def self.pdf_name
+    "#{I18n.t 'view.payments.pdf_name'}-#{Date.today}.pdf"
+  end
+
+  def self.pdf_relative_path
+    File.join(*(['pdfs'] + [Payment.pdf_name]))
+  end
+
+  def self.pdf_full_path
+    File.join(PUBLIC_PATH, Payment.pdf_relative_path)
   end
 end

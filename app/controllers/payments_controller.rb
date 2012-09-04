@@ -21,9 +21,16 @@ class PaymentsController < ApplicationController
       @payments = Payment.filtered_list(params[:q]).page(params[:page])
     end
 
+    session[:ids] = @payments.collect(&:id)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @payments }
+      format.pdf {
+        Payment.to_pdf(Payment.find(params[:ids]), current_user.to_s)
+        session[:ids] = nil
+        redirect_to "/#{Payment.pdf_relative_path}"
+      }
     end
   end
 

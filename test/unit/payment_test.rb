@@ -83,6 +83,23 @@ class PaymentTest < ActiveSupport::TestCase
     assert_equal [error_message_from_model(@payment, :date, :taken)],
       @payment.errors[:date]
   end
+
+  test 'conversion to pdf' do
+    FileUtils.rm Payment.pdf_full_path if File.exists?(Payment.pdf_full_path)
+
+    assert !File.exists?(Payment.pdf_full_path)
+
+    assert_nothing_raised(Exception) do
+      payments = []
+      payments << @payment
+      payments << Fabricate(:payment)
+      Payment.to_pdf(payments, @user.to_s)
+    end
+
+    assert File.exists?(Payment.pdf_full_path)
+
+    FileUtils.rm Payment.pdf_full_path
+  end
 end
 
 

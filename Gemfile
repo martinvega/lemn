@@ -10,6 +10,7 @@ gem 'devise'
 gem 'cancan'
 gem 'role_model'
 gem 'paper_trail'
+gem 'prawn', '~> 0.12.0'
 gem 'validates_timeliness'
 gem 'capistrano'
 

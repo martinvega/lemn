@@ -50,4 +50,12 @@
     t('view.payments.next_to_expire'),
     payments_path(:next_to_expire => true), :class => 'btn'
   ) %>
+
+  <div class="pull-right">
+    <%= link_to(
+      t('view.payments.to_pdf'),
+      payments_path(:ids => session[:ids], :format => :pdf), :class => 'btn btn-inverse'
+    ) %>
+  </div>
 </div>
+
