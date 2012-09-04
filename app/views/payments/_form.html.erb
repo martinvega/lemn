@@ -6,7 +6,7 @@
       :label_method => :to_s %>
     <%= f.input :concept %>
     <%= f.input :amount %>
-    <%= f.input :date, :as => :date_picker %>
+    <%= f.input :date, :as => :date_picker, :input_html => { :value => Date.today } %>
   </div>
 
   <div class="form-actions">
