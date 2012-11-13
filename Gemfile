@@ -13,6 +13,7 @@ gem 'paper_trail'
 gem 'prawn', '~> 0.12.0'
 gem 'validates_timeliness'
 gem 'capistrano'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails'
